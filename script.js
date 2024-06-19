@@ -25,30 +25,18 @@ document.querySelector('.check').addEventListener('click', function () {
     }
 
     /* if guess is too high*/
-  } else if (guess > secretNumber) {
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = '📈 Too high!';
+      document.querySelector('.message').textContent =
+        guess > secretNumber ? '📈 Too high!' : '📉 Too low!';
       /*decrease score by 1*/
       score--;
-
+      document.querySelector('.score').textContent = score;
       /*if score is 0*/
     } else {
       document.querySelector('.message').textContent = '💥 You lost the game!';
       document.querySelector('.score').textContent = 0;
     }
-    /* if guess is too low*/
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = '📉 Too low!';
-      /*decrease score by 1*/
-      score--;
-      document.querySelector('.score').textContent = score;
-
-      /*if score is 0*/
-    } else {
-      document.querySelector('.message').textContent = '💥 You lost the game!';
-    }
-    // document.querySelector('.score').textContent = 0;
   }
 });
 
